@@ -69,7 +69,7 @@ config WOLFSSL_ASM_CAPABLE
 
 choice
 	prompt "Hardware Acceleration"
-	default WOLFSSL_HAS_NO_HW
+	default WOLFSSL_HAS_DEVCRYPTO_CBC
 
 	config WOLFSSL_HAS_NO_HW
 		bool "None"
