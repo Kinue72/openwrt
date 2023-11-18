@@ -216,7 +216,7 @@ define Device/asus_rt-ac85p
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
-  DEVICE_PACKAGES :=  kmod-mt7615d kmod-usb3 uboot-envtools
+  DEVICE_PACKAGES :=  kmod-usb3 kmod-mt7615e kmod-mt7615-firmware uboot-envtools
 endef
 TARGET_DEVICES += asus_rt-ac85p
 
@@ -967,7 +967,7 @@ define Device/jcg_q20
   BLOCKSIZE := 128k
   PAGESIZE := 2048
   UBINIZE_OPTS := -E 5
-  KERNEL_SIZE := 4096k
+  KERNEL_SIZE := 5120k
   IMAGE_SIZE := 91136k
   IMAGES += factory.bin
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
@@ -975,7 +975,7 @@ define Device/jcg_q20
 	check-size
   DEVICE_VENDOR := JCG
   DEVICE_MODEL := Q20
-  DEVICE_PACKAGES := kmod-mt7915e uboot-envtools
+  DEVICE_PACKAGES := luci-app-mtwifi uboot-envtools
 endef
 TARGET_DEVICES += jcg_q20
 
@@ -1947,14 +1947,14 @@ define Device/xiaomi_mi-router-cr660x
   DEVICE_VENDOR := Xiaomi
   BLOCKSIZE := 128k
   PAGESIZE := 2048
-  KERNEL_SIZE := 4096k
+  KERNEL_SIZE := 5120k
   UBINIZE_OPTS := -E 5
   IMAGE_SIZE := 128512k
   IMAGES += firmware.bin
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/firmware.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
-  DEVICE_PACKAGES += kmod-mt7915e uboot-envtools
+  DEVICE_PACKAGES += luci-app-mtwifi uboot-envtools
 endef
 
 define Device/xiaomi_mi-router-cr6606

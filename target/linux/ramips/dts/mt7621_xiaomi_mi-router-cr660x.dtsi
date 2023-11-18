@@ -86,7 +86,7 @@
 		};
 
 		factory: partition@100000 {
-			label = "Factory";
+			label = "factory";
 			reg = <0x100000 0x80000>;
 			read-only;
 		};
@@ -113,12 +113,12 @@
 
 		partition@200000 {
 			label = "kernel";
-			reg = <0x200000 0x400000>;
+			reg = <0x200000 0x500000>;
 		};
 
 		partition@600000 {
 			label = "ubi";
-			reg = <0x600000 0x7980000>;
+			reg = <0x600000 0x7880000>;
 		};
 
 		/*
