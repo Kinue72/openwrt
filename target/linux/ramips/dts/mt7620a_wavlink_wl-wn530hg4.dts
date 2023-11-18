@@ -131,9 +131,8 @@
 };
 
 &wmac {
-	pinctrl-names = "default", "pa_gpio";
+	pinctrl-names = "default";
 	pinctrl-0 = <&pa_pins>;
-	pinctrl-1 = <&pa_gpio_pins>;
 
 	ralink,mtd-eeprom = <&factory 0x0>;
 };

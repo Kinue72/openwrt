@@ -86,9 +86,8 @@
 			};
 
 			firmware: partition@50000 {
-				compatible = "openwrt,uimage", "denx,uimage";
+				compatible = "denx,uimage";
 				label = "firmware";
-				openwrt,ih-magic = <0x12291000>;
 				/* reg property is set based on flash size in DTS files */
 			};
 		};
@@ -114,10 +113,6 @@
 
 &wmac {
 	ralink,mtd-eeprom = <&factory 0x0>;
-
-	pinctrl-names = "default", "pa_gpio";
-	pinctrl-0 = <&pa_pins>;
-	pinctrl-1 = <&pa_gpio_pins>;
 };
 
 &sdhci {
