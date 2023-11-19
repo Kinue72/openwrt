@@ -975,7 +975,7 @@ define Device/jcg_q20
 	check-size
   DEVICE_VENDOR := JCG
   DEVICE_MODEL := Q20
-  DEVICE_PACKAGES := luci-app-mtwifi uboot-envtools
+  DEVICE_PACKAGES := kmod-mac80211 luci-app-mtwifi uboot-envtools
 endef
 TARGET_DEVICES += jcg_q20
 
@@ -1954,7 +1954,7 @@ define Device/xiaomi_mi-router-cr660x
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/firmware.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
-  DEVICE_PACKAGES += luci-app-mtwifi uboot-envtools
+  DEVICE_PACKAGES += kmod-mac80211 luci-app-mtwifi uboot-envtools
 endef
 
 define Device/xiaomi_mi-router-cr6606
