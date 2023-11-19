@@ -39,45 +39,45 @@ local debug = 0
 
 <div id="loading" style="margin-top: 1em; display: none;">
 <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align:e;" />
-    &nbsp;&nbsp;&nbsp; 正在处理，请耐心等待......
+    &nbsp;&nbsp;&nbsp; Processing, please wait......
 </div>
 
 <form method="post" name="cbi" action="<%=luci.dispatcher.build_url("admin", "network", "wifi", "apcli_cfg", devname, vifname)%>" enctype="multipart/form-data" onreset="return cbi_validate_reset(this)" onsubmit="return cbi_validate_form(this, 'Some fields are invalid, cannot save values!')" autocomplete="off">
 
     <fieldset class="cbi-section" id="vif-cfg-apcli">
-        <legend> <a name="apcli_scan_section">无线中继 - <%=devname.."@"..vifname%> </a></legend>
+        <legend> <a name="apcli_scan_section">Wi-Fi Repeater - <%=devname.."@"..vifname%> </a></legend>
         <br />
         <p class="left">
-            <input id="scan" type="button" class="cbi-button cbi-button-find" onclick="get_ap_list('<%=vifname%>')" value="扫描网络" />
+            <input id="scan" type="button" class="cbi-button cbi-button-find" onclick="get_ap_list('<%=vifname%>')" value="Scan Network" />
         </p>
         <div id="loading" style="display:none;">
         <img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align:middle;" />
-            &nbsp;&nbsp;&nbsp; 正在处理，请耐心等待......
+            &nbsp;&nbsp;&nbsp; Processing, please wait......
         </div>
         <div id="aplist">
         </div>
     </fieldset>
     <fieldset class="cbi-section" id="vif-cfg-apcli-config">
-        <legend> <a name="apcli_cfg_section"> 中继参数</a> </legend>
+        <legend> <a name="apcli_cfg_section"> Parent Wi-Fi Information</a> </legend>
         <table class="cbi-section-table">
             <tbody>
             <tr><th class="th1"></th><th></th><th></th></tr>
             <tr>
-                <td>上级无线SSID</td>
+                <td>Parent Wi-Fi SSID</td>
                 <td>
                     <input type="text" name="ApCliSsid" id="ApCliSsid" value="<%=cfgs.ApCliSsid%>"/>
                 </td>
                 <td></td>
             </tr>
             <tr>
-                <td>上级无线信道</td>
+                <td>Parent Wi-Fi Channel</td>
                 <td>
                     <input type="text" name="Channel" id="Channel" value="<%=dev.Channel%>"/>
                 </td>
-                <td> <span style="color:red;">设置完成后，请回到上级页面点击“连接中继”.</span></td>
+                <td> <span style="color:red;">After setting, please go back to the parent page and click "Connect".</span></td>
             </tr>
             <tr>
-                <td>上级无线加密模式</td>
+                <td>Parent Wi-Fi Encryption Mode</td>
                 <td>
                     <select name="ApCliAuthMode" cfg="ApCliAuthMode" id="ApCliAuthMode" onchange="ApCliAuthMode_onchange(this.options[this.options.selectedIndex].value)">
                         <% for _,v in ipairs(dev.ApCliAuthModeList) do %>
@@ -101,7 +101,7 @@ local debug = 0
             </tbody>
             <tbody id="apcli_wpa"<% if cfgs.ApCliAuthMode ~= "WPA2PSK" then %> style="display: none;"<% end %>>
             <tr>
-                <td>上级无线加密算法</td>
+                <td>Parent Wi-Fi Encryption Algorithm</td>
                 <td>
                     <select name="wpa_ApCliEncrypType" id="wpa_ApCliEncrypType" >
                     <% for _, v in ipairs(dev.WPA_Enc_List) do %>
@@ -113,7 +113,7 @@ local debug = 0
                 <td></td>
             </tr>
             <tr>
-                <td>上级无线密码</td>
+                <td>Parent Wi-Fi Password</td>
                 <td>
                     <input type="text" name="ApCliWPAPSK" id="ApCliWPAPSK" value="<%=cfgs.ApCliWPAPSK%>"/>
                 </td>
@@ -146,9 +146,9 @@ local debug = 0
     </fieldset>
 
     <div class="cbi-page-actions" id="apcli_form_buttons">
-        <input class="cbi-button cbi-button-apply" value="重启无线" type="button" onclick='wifi_reload("<%=luci.dispatcher.build_url("admin", "network", "wifi", "reload", devname)%>");' />
-        <input class="cbi-button cbi-button-apply" value="保存设置" type="submit" />
-        <input class="cbi-button cbi-button-reset" value="重置设置" type="reset" />
+        <input class="cbi-button cbi-button-apply" value="Restart Wi-Fi" type="button" onclick='wifi_reload("<%=luci.dispatcher.build_url("admin", "network", "wifi", "reload", devname)%>");' />
+        <input class="cbi-button cbi-button-apply" value="Save Settings" type="submit" />
+        <input class="cbi-button cbi-button-reset" value="Reset Settings" type="reset" />
     </div>
 </form>
 
@@ -205,7 +205,7 @@ local debug = 0
              || aplist[i].authmode == "WPAPSK"
              || aplist[i].authmode == "WPA2PSK"
              || aplist[i].authmode == "WPAPSKWPA2PSK") {
-                td5.innerHTML = '<a href="javascript:choose_rootap(\''+i+'\')" >启用</a>';
+                td5.innerHTML = '<a href="javascript:choose_rootap(\''+i+'\')" >Enable</a>';
 
             } else {
                 td5.innerHTML = 'Security Not Supported';
@@ -214,17 +214,17 @@ local debug = 0
 
         var tr = table.insertRow(0);
         var td0 = tr.insertCell(0);
-        td0.innerHTML = '<strong>无线名称</strong>';
+        td0.innerHTML = '<strong>Wi-Fi Name</strong>';
         var td1 = tr.insertCell(1);
-        td1.innerHTML = '<strong>信道</strong>';
+        td1.innerHTML = '<strong>Channel</strong>';
         var td2 = tr.insertCell(2);
         td2.innerHTML = '<strong>BSSID</strong>';
         var td3 = tr.insertCell(3);
-        td3.innerHTML = '<strong>加密方式</strong>';
+        td3.innerHTML = '<strong>Encryption Method</strong>';
         var td4 = tr.insertCell(4);
-        td4.innerHTML = '<strong>信号强度</strong>';
+        td4.innerHTML = '<strong>Signal Strength</strong>';
         var td5 = tr.insertCell(5);
-        td5.innerHTML = '<strong>动作</strong>';
+        td5.innerHTML = '<strong>Action</strong>';
 
         var div = document.getElementById('aplist');
         div.innerHTML = "";
