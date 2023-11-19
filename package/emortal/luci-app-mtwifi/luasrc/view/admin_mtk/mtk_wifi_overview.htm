@@ -43,7 +43,7 @@ local devs = mtkwifi.get_all_devs()
                     </td>
                     <td style="width:310px;text-align:right">
                         <input class="cbi-button cbi-button-reload" style="width:100px" title="Restart Wi-Fi" value="Restart Wi-Fi" type="button" onclick='wifi_reload("<%=luci.dispatcher.build_url("admin", "network", "wifi", "reload", dev.devname)%>");' />
-                        <input class="cbi-button cbi-button-edit" style="width:100px" title="Advanced Wi-Fi Settings" value="Advanced Settings" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "dev_cfg_view", dev.devname)%>'" />
+                        <input class="cbi-button cbi-button-edit" style="width:100px" title="Advanced Wi-Fi Settings" value="Settings" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "dev_cfg_view", dev.devname)%>'" />
                         <input class="cbi-button cbi-button-add" style="width:100px" title="Add SSID" value="Add SSID" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_add_view", dev.devname,dev.vifs.__prefix)%>'" />
                     </td>
                 </tr>
@@ -75,7 +75,7 @@ local devs = mtkwifi.get_all_devs()
                         <% else %>
                         <input class="cbi-button cbi-button-apply" style="width:100px" title="Disable Wi-Fi" value="Enable" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_enable", vif.vifname)%>'" />
                         <% end %>
-                        <input class="cbi-button cbi-button-edit" style="width:100px" title="Basic Settings" value="Basic Settings" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_cfg_view", dev.devname, vif.vifname)%>'" />
+                        <input class="cbi-button cbi-button-edit" style="width:100px" title="Basic Settings" value="Settings" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_cfg_view", dev.devname, vif.vifname)%>'" />
                         <input class="cbi-button cbi-button-remove" style="width:100px" title="Delete Interface" value="Delete" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_del", dev.devname, vif.vifname)%>'" />
                     </td>
                 </tr>
